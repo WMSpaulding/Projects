@@ -1,0 +1,118 @@
+/* HTML Code:
+
+		<div class="videoOverlay" id="videoContainer">
+			<div class="background"></div>
+			<video autoplay src="videos/test1.mp4" id="vid"></video>
+			<div class="exit">
+				<img src="images/exit.png" id="videoExit" />
+			</div>
+			<div class="player">
+				<img src="images/play.png" id="videoOverlay" />
+			</div>
+		</div>
+	
+	<script src="script/videoOverlay.js"></script>
+	
+	The html code may change accoring to any asthetics you choose to
+	remove from the end product.
+	
+	Good luck!
+*/
+
+
+/* First, we start with a video container that will
+scroll with the page. */
+.videoOverlay {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+}
+
+/* Next, we set up the video. */
+.videoOverlay video {
+	/* These details help center the video */
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+	/* These details are for aesthetics */
+	width: 800px;
+	height: 400px;
+	background-color: black;
+	border-color: black;
+	border-radius: 10px;
+	padding: 20px;
+	
+	/* This z-index value will be a constant, in which it 
+	will help with video control overlays. */
+	z-index: 2;
+}
+
+/* Aesthetic, not required */
+.videoOverlay .background {
+	width: 100%;
+	height: 100%;
+	background-color: black;
+	opacity: .5;
+}
+
+/* Video exit control container */
+.videoOverlay .exit {
+	/* This container was used after calculating
+	the width and height as a reference for the image
+	overlay of the exit button. The width and height 
+	can be changed for aesthetic preference. */
+	position: absolute;
+	width: 875px;
+	height: 475px;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+}
+
+.videoOverlay .exit img {
+	/* Forces placement according to exit container */
+	position: relative;
+	/* Aesthetic, optional */
+	width: 50px;
+	height: 50px;
+	float: right;
+	opacity: .5;
+	
+	/* Constant value used to overlay everything
+	for javascript exit element click */
+	z-index: 3;
+}
+
+.videoOverlay .player img {
+	/* These details help center the player button */
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+	/* These details are for aesthetics */
+	width: 200px;
+	height: 200px;
+	background-color: black;
+	border-color: black;
+	border-radius: 10px;
+	padding: 20px;
+	opacity: .5;
+	
+	/* This value is altered with javascript based
+	on click events, allowing for the play/replay 
+	button to show up. The values change between 1 
+	and 3. */
+	z-index: 1;
+}
+
+/* Aesthetic, not required */
+.videoOverlay img:hover {
+	opacity: 1;
+}

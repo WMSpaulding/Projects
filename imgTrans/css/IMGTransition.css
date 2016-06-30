@@ -1,0 +1,111 @@
+/* Multiple IMG Transition Calculation 
+While: n = number of images
+imgBounds = 100% / n
+no. Of classes = n
+delay = (animation duration / n) * (imageNumber - 1)
+
+i.e. Two Images -
+imgBounds = 100% / 2 = 50% 
+
+This means that there will be a new image start transition
+every 50% that passes, but only when we deal with the delay.
+
+0% - keyframeMin%
+50% - keyframeMax%
+
+For the keyframe, these are where you will want to transition
+the images. Keep in mind, you will have to make more instances
+if you care to allow for -webkit-, -moz-, and -o-.
+
+@keyframes img {
+	0%	{opacity: 0;}
+	2%	{opacity: .2;}
+	4%	{opacity: .4;}
+	6%	{opacity: .6;}
+	8%	{opacity: .8;}
+	10%	{opacity: 1;}
+	42%	{opacity: .8;}
+	44%	{opacity: .6;}
+	46%	{opacity: .4;}
+	48%	{opacity: .2;}
+	50% {opacity: 0;}
+}
+
+Then, for the animation, we have a class for each animation and 
+create a delay according to how many images we have:
+
+.animation .img1 {
+	opacity: 0;
+	animation: img 20s infinite;
+}
+
+.animation .img2 {
+	opacity: 0;
+	animation: img 20s 10s infinite;
+}
+
+Another thing to keep in mind, the container that you are placing the
+images inside needs to apply the following:
+
+.animation .img {
+	position: absolute;
+}
+
+I also suggest adding parameters for width, height, and even border-radius,
+but from this point the display elements are all on you!
+
+For the HTML code, the structure should look like this:
+
+		<div class="animation">
+			<div class="img1">
+				<image src="images/test1.png"/>
+			</div>
+			<div class="img2">
+				<image src="images/test2.png"/>
+			</div>
+		</div>
+
+Good Luck!
+
+*/
+
+/* Transition Keyframe */ 
+
+@keyframes imgTrans {
+	0%	{opacity: 0;}
+	1%	{opacity: .2;}
+	2%	{opacity: .4;}
+	3%	{opacity: .6;}
+	4%	{opacity: .8;}
+	5%	{opacity: 1;}
+	28%	{opacity: 1;}
+	29%	{opacity: .8;}
+	30%	{opacity: .6;}
+	31%	{opacity: .4;}
+	32%	{opacity: .2;}
+	33% {opacity: 0;}
+}
+
+/* Class Container */
+
+.animation img {
+	position: absolute;
+	border-radius: 10px;
+}
+
+/* Multiple IMG Transition Classes */
+
+.animation .img1 {
+	opacity: 0;
+	animation: imgTrans 30s linear infinite;
+}
+
+.animation .img2 {
+	opacity: 0;
+	animation: imgTrans 30s 10s linear infinite;
+}
+
+.animation .img3 {
+	opacity: 0;
+	animation: imgTrans 30s 20s linear infinite;
+}
